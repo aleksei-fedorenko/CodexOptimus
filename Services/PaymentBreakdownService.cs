@@ -43,10 +43,8 @@ namespace Services
                     {
                         PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                             request.LoanStartDate,
-                            request.LoanEndDate,
                             request.PaymentDay,
-                            numberOfMonth,
-                            numberOfMonths),
+                            numberOfMonth),
                         LoanBalance = Math.Round(loanBalance, 2),
                         LoanInterestPaymentAmount = Math.Round(overpaymentPerMonth, 2),
                         LoanPaymentAmount = Math.Round(monthlyLoanPayment - overpaymentPerMonth, 2),
@@ -70,10 +68,8 @@ namespace Services
                     {
                         PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                             request.LoanStartDate,
-                            request.LoanEndDate,
                             request.PaymentDay,
-                            numberOfMonth,
-                            numberOfMonths),
+                            numberOfMonth),
                         LoanBalance = Math.Round(loanBalance - monthlyLoanPayment, 2),
                         LoanInterestPaymentAmount = Math.Round(loanBalance * loanInterestPaymentRate, 2),
                         LoanPaymentAmount = monthlyLoanPayment,
