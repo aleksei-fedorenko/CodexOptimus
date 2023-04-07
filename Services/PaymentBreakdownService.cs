@@ -41,7 +41,12 @@ namespace Services
 
                     return new PaymentBreakdown
                     {
-                        PaymentDate = GetPaymentDate(request, numberOfMonth, numberOfMonths),
+                        PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
+                            request.LoanStartDate,
+                            request.LoanEndDate,
+                            request.PaymentDay,
+                            numberOfMonth,
+                            numberOfMonths),
                         LoanBalance = Math.Round(loanBalance, 2),
                         LoanInterestPaymentAmount = Math.Round(overpaymentPerMonth, 2),
                         LoanPaymentAmount = Math.Round(monthlyLoanPayment - overpaymentPerMonth, 2),
@@ -63,7 +68,12 @@ namespace Services
                 {
                     var result = new PaymentBreakdown
                     {
-                        PaymentDate = GetPaymentDate(request, numberOfMonth, numberOfMonths),
+                        PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
+                            request.LoanStartDate,
+                            request.LoanEndDate,
+                            request.PaymentDay,
+                            numberOfMonth,
+                            numberOfMonths),
                         LoanBalance = Math.Round(loanBalance - monthlyLoanPayment, 2),
                         LoanInterestPaymentAmount = Math.Round(loanBalance * loanInterestPaymentRate, 2),
                         LoanPaymentAmount = monthlyLoanPayment,
@@ -74,51 +84,6 @@ namespace Services
                     return result;
                 })
                 .ToArray();
-        }
-
-        private static DateTime GetPaymentDate(
-            GetPaymentsBreakdownRequest request,
-            int numberOfMonth,
-            int numberOfMonths)
-        {
-            DateTime paymentDate;
-
-            if (numberOfMonth != numberOfMonths)
-            {
-                paymentDate = request.LoanStartDate.AddMonths(numberOfMonth).Date;
-
-                if (request.PaymentDay.HasValue)
-                {
-                    var daysInMonth = DateTime.DaysInMonth(paymentDate.Year, paymentDate.Month);
-
-                    paymentDate = request.PaymentDay <= daysInMonth
-                        ? new DateTime(paymentDate.Year, paymentDate.Month, request.PaymentDay.Value)
-                        : new DateTime(paymentDate.Year, paymentDate.Month, daysInMonth);
-                }
-
-                var normalizedPaymentDate = paymentDate.DayOfWeek switch
-                {
-                    DayOfWeek.Saturday => paymentDate.AddDays(2),
-                    DayOfWeek.Sunday => paymentDate.AddDays(1),
-                    _ => paymentDate,
-                };
-
-                paymentDate = paymentDate.Year == normalizedPaymentDate.Year
-                        && paymentDate.Month == normalizedPaymentDate.Month
-                    ? normalizedPaymentDate
-                    : paymentDate.DayOfWeek switch
-                    {
-                        DayOfWeek.Saturday => paymentDate.AddDays(-1),
-                        DayOfWeek.Sunday => paymentDate.AddDays(-2),
-                        _ => paymentDate,
-                    };
-            }
-            else
-            {
-                paymentDate = request.LoanEndDate;
-            }
-
-            return paymentDate;
         }
 
         #endregion Private methods

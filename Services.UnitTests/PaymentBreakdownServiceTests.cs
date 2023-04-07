@@ -30,6 +30,9 @@ namespace Services.UnitTests
             result.Should().NotBeEmpty().And.BeEquivalentTo(expectedResult);
             result.Last().LoanBalance.Should().Be(0);
             result.Sum(element => element.LoanPaymentAmount).Should().Be(request.LoanAmount);
+            result.Select(element => (element.PaymentDate.Year, element.PaymentDate.Month))
+                .Should()
+                .OnlyHaveUniqueItems();
         }
 
         [TestCaseSource(typeof(PaymentBreakdownServiceTestCases),
@@ -58,6 +61,9 @@ namespace Services.UnitTests
             result.Should().NotBeEmpty().And.BeEquivalentTo(expectedResult);
             result.Last().LoanBalance.Should().Be(0);
             result.Sum(element => element.LoanPaymentAmount).Should().Be(request.LoanAmount);
+            result.Select(element => (element.PaymentDate.Year, element.PaymentDate.Month))
+                .Should()
+                .OnlyHaveUniqueItems();
         }
 
         [TestCaseSource(typeof(PaymentBreakdownServiceTestCases),
