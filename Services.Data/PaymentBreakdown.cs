@@ -3,6 +3,7 @@
     /// <summary>
     /// Payment breakdown
     /// </summary>
+    [Serializable]
     public class PaymentBreakdown
     {
         /// <summary>

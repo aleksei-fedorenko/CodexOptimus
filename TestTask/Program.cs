@@ -9,6 +9,8 @@ namespace TestTask
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            LoggingConfiguration.Configure(builder);
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer().AddSwaggerGen();
 

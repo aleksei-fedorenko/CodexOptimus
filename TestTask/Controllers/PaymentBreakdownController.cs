@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using Shared.Api.Data.GetPaymentsBreakdown;
 using System.Net;
+using System.Text.Json;
 using TestTask.Controllers.Validation;
 using ServiceData = Services.Data;
 
@@ -13,13 +14,16 @@ namespace TestTask.Controllers
     public class PaymentBreakdownController : ControllerBase
     {
         private readonly IPaymentBreakdownService _paymentBreakdownService;
+        private readonly ILogger<PaymentBreakdownController> _logger;
         private readonly IMapper _mapper;
 
         public PaymentBreakdownController(
             IPaymentBreakdownService paymentBreakdownService,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger<PaymentBreakdownController> logger)
         {
             _paymentBreakdownService = paymentBreakdownService;
+            _logger = logger;
             _mapper = mapper;
         }
 
@@ -31,10 +35,12 @@ namespace TestTask.Controllers
         [HttpPost, ProducesResponseType(typeof(GetPaymentsBreakdownResponse), (int)HttpStatusCode.OK)]
         public IActionResult GetPaymentsBreakdown([FromBody] GetPaymentsBreakdownRequest request)
         {
-            request.LoanEndDate = request.LoanEndDate.Date;
-            request.LoanStartDate = request.LoanStartDate.Date;
+            _logger.LogInformation("GetPaymentsBreakdown request: {0}", JsonSerializer.Serialize(request));
 
             new GetPaymentsBreakdownRequestValidator().ValidateAndThrow(request);
+
+            request.LoanEndDate = request.LoanEndDate.Date;
+            request.LoanStartDate = request.LoanStartDate.Date;
 
             var serviceRequest = _mapper.Map<ServiceData.GetPaymentsBreakdown.GetPaymentsBreakdownRequest>(request);
 
@@ -42,6 +48,8 @@ namespace TestTask.Controllers
             {
                 PaymentBreakdowns = _paymentBreakdownService.GetPaymentBreakdowns(serviceRequest),
             };
+
+            _logger.LogInformation("GetPaymentsBreakdown response: {0}", JsonSerializer.Serialize(result));
 
             return Ok(result);
         }

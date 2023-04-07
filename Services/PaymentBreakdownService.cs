@@ -81,24 +81,39 @@ namespace Services
             int numberOfMonth,
             int numberOfMonths)
         {
-            var paymentDate = request.LoanStartDate.AddMonths(numberOfMonth).Date;
+            DateTime paymentDate;
 
-            if (request.PaymentDay.HasValue && numberOfMonth != numberOfMonths)
+            if (numberOfMonth != numberOfMonths)
             {
-                var daysInMonth = DateTime.DaysInMonth(paymentDate.Year, paymentDate.Month);
+                paymentDate = request.LoanStartDate.AddMonths(numberOfMonth).Date;
 
-                paymentDate = request.PaymentDay > daysInMonth
-                    ? new DateTime(paymentDate.Year, paymentDate.Month, daysInMonth)
-                    : new DateTime(paymentDate.Year, paymentDate.Month, request.PaymentDay.Value);
+                if (request.PaymentDay.HasValue)
+                {
+                    var daysInMonth = DateTime.DaysInMonth(paymentDate.Year, paymentDate.Month);
 
-                paymentDate = paymentDate.DayOfWeek switch
+                    paymentDate = request.PaymentDay <= daysInMonth
+                        ? new DateTime(paymentDate.Year, paymentDate.Month, request.PaymentDay.Value)
+                        : new DateTime(paymentDate.Year, paymentDate.Month, daysInMonth);
+                }
+
+                var normalizedPaymentDate = paymentDate.DayOfWeek switch
                 {
                     DayOfWeek.Saturday => paymentDate.AddDays(2),
                     DayOfWeek.Sunday => paymentDate.AddDays(1),
                     _ => paymentDate,
                 };
+
+                paymentDate = paymentDate.Year == normalizedPaymentDate.Year
+                        && paymentDate.Month == normalizedPaymentDate.Month
+                    ? normalizedPaymentDate
+                    : paymentDate.DayOfWeek switch
+                    {
+                        DayOfWeek.Saturday => paymentDate.AddDays(-1),
+                        DayOfWeek.Sunday => paymentDate.AddDays(-2),
+                        _ => paymentDate,
+                    };
             }
-            else if (numberOfMonth == numberOfMonths)
+            else
             {
                 paymentDate = request.LoanEndDate;
             }

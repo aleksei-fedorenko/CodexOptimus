@@ -5,6 +5,7 @@ namespace Shared.Api.Data.GetPaymentsBreakdown
     /// <summary>
     /// Request for payment breakdown
     /// </summary>
+    [Serializable]
     public class GetPaymentsBreakdownRequest
     {
         /// <summary>
