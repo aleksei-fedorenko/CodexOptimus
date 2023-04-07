@@ -28,8 +28,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 100736.97,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                1),
+                                1,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -38,8 +40,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 81185.00,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                2),
+                                2,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -48,8 +52,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 61339.75,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                3),
+                                3,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -58,8 +64,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 41196.82,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                4),
+                                4,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -68,8 +76,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 20751.75,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                5),
+                                5,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -78,7 +88,9 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 0,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
+                                6,
                                 6),
                         },
                     }),
@@ -101,8 +113,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 100736.97,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 31,
-                                1),
+                                1,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -111,8 +125,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 81185.00,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 31,
-                                2),
+                                2,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -121,8 +137,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 61339.75,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 31,
-                                3),
+                                3,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -131,8 +149,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 41196.82,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 31,
-                                4),
+                                4,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -141,8 +161,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 20751.75,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 31,
-                                5),
+                                5,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -151,7 +173,9 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 0,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 31,
+                                6,
                                 6),
                         },
                     })
@@ -241,8 +265,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 100000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                1),
+                                1,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -251,8 +277,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 80000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                2),
+                                2,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -261,8 +289,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 60000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                3),
+                                3,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -271,8 +301,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 40000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                4),
+                                4,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -281,8 +313,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 20000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
-                                5),
+                                5,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -291,7 +325,9 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 0,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 null,
+                                6,
                                 6),
                         },
                     }),
@@ -314,8 +350,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 100000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 29,
-                                1),
+                                1,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -324,8 +362,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 80000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 29,
-                                2),
+                                2,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -334,8 +374,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 60000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 29,
-                                3),
+                                3,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -344,8 +386,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 40000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 29,
-                                4),
+                                4,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -354,8 +398,10 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 20000,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 29,
-                                5),
+                                5,
+                                6),
                         },
                         new Data.PaymentBreakdown
                         {
@@ -364,7 +410,9 @@ namespace Services.UnitTests.TestCases
                             LoanBalance = 0,
                             PaymentDate = PaymentBreakdownHelper.GetPaymentDate(
                                 DateTime.Now.Date,
+                                DateTime.Now.AddMonths(6).Date,
                                 29,
+                                6,
                                 6),
                         },
                     })
